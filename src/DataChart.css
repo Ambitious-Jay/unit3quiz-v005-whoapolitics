@@ -1,0 +1,320 @@
+.data-chart-container {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.chart-header {
+  padding: 1.5rem;
+  background: rgba(30, 58, 95, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.chart-header h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.4rem;
+  color: #fff;
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.chart-subtitle {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0.5rem 0 0;
+  font-style: italic;
+}
+
+.data-source-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.75rem;
+  color: #d4af37;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.data-source-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Loading & Error States */
+.chart-loading,
+.chart-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.chart-error {
+  color: #ff6b6b;
+}
+
+/* Filters Section */
+.filters-section {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.filter-row {
+  margin-bottom: 1rem;
+}
+
+.filter-row:last-child {
+  margin-bottom: 0;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-group label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Toggle Buttons */
+.toggle-buttons {
+  display: flex;
+  gap: 0;
+}
+
+.toggle-buttons button {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-buttons button:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.toggle-buttons button:last-child {
+  border-radius: 0 4px 4px 0;
+  border-left: none;
+}
+
+.toggle-buttons button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.toggle-buttons button.active {
+  background: linear-gradient(135deg, #c41e3a 0%, #8b1528 100%);
+  border-color: #c41e3a;
+  color: #fff;
+}
+
+/* Search Input */
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #d4af37;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Select */
+.filter-select,
+.date-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4af37' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.filter-select:focus,
+.date-select:focus {
+  outline: none;
+  border-color: #d4af37;
+}
+
+.filter-select option,
+.date-select option {
+  background: #1a2744;
+  color: #fff;
+}
+
+.hint {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
+/* Date Row */
+.date-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.date-row .filter-group {
+  flex: 1;
+}
+
+.date-separator {
+  padding-bottom: 0.85rem;
+  font-family: 'Oswald', sans-serif;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.1em;
+}
+
+/* Chart Placeholder */
+.chart-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.placeholder-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.chart-placeholder p {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+.chart-placeholder.error {
+  background: rgba(196, 30, 58, 0.1);
+  border-top: 1px solid rgba(196, 30, 58, 0.3);
+}
+
+.chart-placeholder.error p {
+  color: #ff6b6b;
+}
+
+/* Chart Wrapper */
+.chart-wrapper {
+  padding: 1.5rem;
+}
+
+/* Chart Summary */
+.chart-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.summary-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.summary-value {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.summary-value.retail {
+  color: #c41e3a;
+}
+
+.summary-value.warehouse {
+  color: #d4af37;
+}
+
+.summary-value.transfers {
+  color: #4a9eff;
+}
+
+/* Recharts overrides */
+.recharts-legend-item-text {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .date-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .date-separator {
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+  
+  .chart-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
